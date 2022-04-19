@@ -1,0 +1,96 @@
+@font-face {
+	font-family: DigitalDream;
+	src: url(./fonts/DIGITALDREAMFATNARROW.ttf);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 10vh auto;
+	height: 600px;
+	width: 400px;
+	padding: 5px 15px;
+	border: 2px solid black;
+	border-radius: 25px;
+	background-color: rgb(60, 60, 60);
+	box-shadow: inset 0 -5px 10px rgb(20, 20, 20);
+	box-shadow: 0 15px 10px rgba(0, 0, 0, 0.25);
+}
+
+.block {
+	display: inline-block;
+	background-color: rgb(65, 45, 45);
+	width: 150px;
+	height: 40px;
+	margin: 10px 15px 0 10px;
+	box-shadow: inset 0 -10px 20px rgb(20, 0, 0);
+	border: 2px solid black;
+	border-top-style: none;
+}
+
+.calc-header {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 22.5px;
+	color: rgba(160, 160, 160);
+	text-align: right;
+	font-size: 30px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: 900;
+	text-transform: uppercase;
+	margin: -10px 0;
+	text-shadow: 0px 2px 3px rgb(20, 20, 20);
+}
+
+.buttons-grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 10px;
+}
+
+.double {
+	grid-column: span 2;
+}
+
+.input {
+	border: 2px solid black;
+	height: 80px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin: 10px 0 15px 0;
+	text-align: right;
+	word-wrap: break-word;
+	word-break: break-all;
+	line-height: 1.5;
+	background-color: rgb(125, 140, 115);
+	color: rgb(53, 53, 53);
+	font-family: DigitalDream;
+	box-shadow: inset 0 -2px 3px rgb(65, 80, 55);
+}
+
+.current-op {
+	font-size: 32px;
+}
+
+.last-op {
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+
+.btn {
+	padding: 25px;
+	cursor: pointer;
+	border: 2px solid black;
+	border-radius: 5px;
+	font-size: 16px;
+	background-color: rgb(220, 220, 220);
+	box-shadow: inset 0 -2px 3px rgb(150, 150, 150);
+}
+
+.btn:hover {
+	background-color: rgb(200, 200, 200);
+}
