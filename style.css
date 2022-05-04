@@ -22,7 +22,7 @@
 }
 
 .block {
-	display: inline-block;
+	display: inline-flex;
 	background-color: rgb(65, 45, 45);
 	width: 150px;
 	height: 40px;
@@ -33,17 +33,28 @@
 	border-radius: 3px;
 }
 
+.block > .square {
+	display: flex;
+	flex-direction: row;
+	width: 25%;
+	border-left: 1px solid black;
+}
+
+.block > .square-hidden {
+	border-left: 0;
+}
+
 .buttons-grid {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 10px;
 }
 
-.double {
+.span-two {
 	grid-column: span 2;
 }
 
-.input {
+.output {
 	border: 2px solid black;
 	height: 80px;
 	padding: 10px 20px;
@@ -63,12 +74,12 @@
 	font-size: 32px;
 }
 
-.last-op {
+.prev-op {
 	font-size: 18px;
 	margin-bottom: 5px;
 }
 
-.btn {
+button {
 	padding: 25px;
 	cursor: pointer;
 	border: 2px solid black;
@@ -79,7 +90,7 @@
 	transition: .3s ease-in-out;
 }
 
-.btn:hover {
+button:hover {
 	background-color: rgb(180, 180, 180);
 	transition: .1s ease-in-out;
 }
