@@ -94,3 +94,12 @@ button:hover {
 	background-color: rgb(180, 180, 180);
 	transition: .1s ease-in-out;
 }
+
+.orange {
+	background-color: rgb(255, 102, 0);
+	box-shadow: inset 0 -2px 3px rgb(190, 60, 15);
+}
+
+.orange:hover {
+	background-color: rgb(225, 72, 0);
+}

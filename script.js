@@ -1,8 +1,7 @@
 // Calculator Functionality
-
 class Calculator {
 	constructor(prevOpText, currentOpText) {
-		this.prevOpText = currentOpText;
+		this.prevOpText = prevOpText;
 		this.currentOpText = currentOpText;
 		this.clear();
 	}
@@ -13,7 +12,7 @@ class Calculator {
 		this.operation = undefined;
 	}
 
-	delete() {
+	deleteLast() {
 		this.currentOp = this.currentOp.toString().slice(0, -1);
 	}
 
@@ -24,7 +23,7 @@ class Calculator {
 
 	chooseOperation(operation) {
 		if (this.currentOp === '') return;
-		if (this.currentOp !== '') {
+		if (this.prevOp !== '') {
 			this.compute();
 		}
 
@@ -60,14 +59,55 @@ class Calculator {
 				return;
 		}
 
-		this.currentOp = computation;
+		this.currentOp = Math.round(computation * 1000000) / 1000000;
 		this.prevOp = '';
-		this.operator = undefined;
+		this.operation = undefined;
 	}
 
 	updateDisplay() {
 		this.currentOpText.innerText = this.currentOp;
+		if (this.operation != null) {
+			this.prevOpText.innerText = `${this.prevOp} ${this.operation}`;
+		} else {
+			this.prevOpText.innerText = '';
+		}
 	}
+}
+
+// Keyboard Event Listeners
+function keyboardInput(e) {
+	if (e.key >= 0 && e.key <= 9) {
+		calculator.appendNum(e.key);
+		calculator.updateDisplay();
+	}
+	if (e.key === '.') {
+		calculator.appendNum(e.key);
+		calculator.updateDisplay();
+	}
+	if (e.key === '=' || e.key === 'Enter') {
+		calculator.compute();
+		calculator.updateDisplay();
+	}
+	if (e.key === 'Backspace') {
+		calculator.deleteLast();
+		calculator.updateDisplay();
+	}
+	if (e.key === 'Escape') {
+		calculator.clear();
+		calculator.updateDisplay();
+	}
+
+	if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+		calculator.chooseOperation(operatorConversion(e.key));
+		calculator.updateDisplay();
+	}
+}
+
+function operatorConversion(keyboardOperator) {
+	if (keyboardOperator === '/') return '÷';
+	if (keyboardOperator === '*') return '*';
+	if (keyboardOperator === '-') return '-';
+	if (keyboardOperator === '+') return '+';
 }
 
 // Query Selections + Init
@@ -83,9 +123,10 @@ const calculator = new Calculator(prevOpText, currentOpText);
 
 this.currentOp = '';
 this.prevOp = '';
-this.operator = undefined;
+this.operation = undefined;
 
 // Event Listeners
+document.addEventListener('keydown', keyboardInput);
 
 numButtons.forEach((button) => {
 	button.addEventListener('click', () => {
